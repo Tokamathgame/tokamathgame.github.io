@@ -379,10 +379,7 @@
       </div>
 
       <div class="stats-grid">
-        <div class="stat-box">
-          Tries Left
-          <span class="stat-value" id="triesValue">3</span>
-        </div>
+        
         <div class="stat-box">
           Correct
           <span class="stat-value" id="correctValue">0</span>
@@ -423,8 +420,7 @@
       pointsInline: document.getElementById("pointsInline"),
       modeValue: document.getElementById("modeValue"),
       scoreValue: document.getElementById("scoreValue"),
-      triesValue: document.getElementById("triesValue"),
-      correctValue: document.getElementById("correctValue"),
+            correctValue: document.getElementById("correctValue"),
       hintBox: document.getElementById("hintBox"),
       celebration: document.getElementById("celebration"),
       celebrationText: document.getElementById("celebrationText"),
@@ -505,8 +501,7 @@
     function updateView() {
       elements.scoreValue.textContent = state.score;
       elements.pointsInline.textContent = `Points Earned: ${state.score}`;
-      elements.triesValue.textContent = state.triesLeft;
-      elements.correctValue.textContent = state.correct;
+            elements.correctValue.textContent = state.correct;
       elements.modeValue.textContent = getModeDisplayName();
       elements.welcomeText.textContent = state.playerName
         ? `🎉 ${state.playerName} is playing!`
@@ -584,7 +579,7 @@
       updateView();
 
       if (state.triesLeft > 0) {
-        setFeedback(`${explainWrong(userAnswer)}<br><strong>Try again.</strong> Tries left: ${state.triesLeft}`, "retry");
+        setFeedback(`${explainWrong(userAnswer)}<br><strong>Try again.</strong>`, "retry");
       } else {
         setFeedback(`${explainWrong(userAnswer)}<br><strong>No more tries this round.</strong> Let's move to a similar problem now.`, "move");
         setTimeout(() => nextProblem(true), 1400);
