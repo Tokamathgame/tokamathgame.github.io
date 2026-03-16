@@ -6,8 +6,6 @@
   <title>Yunus Math Number Game</title>
   <style>
     :root {
-      --bg1: #fff8e7;
-      --bg2: #e9f7ff;
       --card: #ffffff;
       --text: #24324a;
       --pink: #ff7eb6;
@@ -15,88 +13,56 @@
       --yellow: #ffd166;
       --green: #7bd389;
       --purple: #b197fc;
-      --red: #ff8c8c;
-      --shadow: 0 10px 25px rgba(36, 50, 74, 0.15);
+      --shadow: 0 8px 18px rgba(36, 50, 74, 0.08);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: "Trebuchet MS", "Comic Sans MS", Arial, sans-serif;
-      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      background: #f7fbff;
       color: var(--text);
       min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    .floating-shape {
-      position: fixed;
-      border-radius: 50%;
-      opacity: 0.18;
-      animation: float 7s ease-in-out infinite;
-      z-index: 0;
-    }
-
-    .shape1 { width: 120px; height: 120px; background: var(--pink); top: 8%; left: 4%; }
-    .shape2 { width: 180px; height: 180px; background: var(--yellow); top: 68%; left: 78%; animation-delay: 1s; }
-    .shape3 { width: 90px; height: 90px; background: var(--blue); top: 18%; left: 82%; animation-delay: 2s; }
-    .shape4 { width: 130px; height: 130px; background: var(--green); top: 72%; left: 8%; animation-delay: 1.5s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-16px); }
     }
 
     .container {
-      position: relative;
-      z-index: 1;
-      max-width: 1100px;
+      max-width: 920px;
       margin: 0 auto;
       padding: 24px;
     }
 
     .hero {
       text-align: center;
-      padding: 20px 10px 10px;
+      padding: 10px 10px 18px;
     }
 
     .hero h1 {
       margin: 0;
-      font-size: clamp(2rem, 4vw, 3.3rem);
+      font-size: clamp(2rem, 4vw, 3.2rem);
       color: #ff5f8f;
-      text-shadow: 2px 2px 0 #fff;
     }
 
     .hero p {
       margin: 10px auto 0;
-      max-width: 720px;
-      font-size: 1.15rem;
+      max-width: 700px;
+      font-size: 1.08rem;
       line-height: 1.5;
-    }
-
-    .main-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 24px;
-      margin-top: 18px;
-      align-items: start;
     }
 
     .card {
       background: var(--card);
-      border-radius: 28px;
+      border-radius: 24px;
       box-shadow: var(--shadow);
       padding: 24px;
-      border: 5px solid rgba(255,255,255,0.9);
+      border: 1px solid #e5eef7;
+      margin-bottom: 20px;
     }
 
     .setup-row,
     .answer-row,
-    .stats-grid,
-    .operation-buttons {
+    .operation-buttons,
+    .stats-grid {
       display: grid;
       gap: 12px;
     }
@@ -106,27 +72,43 @@
       align-items: end;
     }
 
+    .answer-row {
+      grid-template-columns: 1fr auto auto;
+      align-items: end;
+      margin-top: 18px;
+    }
+
+    .operation-buttons {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 14px;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 18px;
+    }
+
     label {
       display: block;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 8px;
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
 
     input[type="text"],
     input[type="number"] {
       width: 100%;
-      padding: 14px 16px;
+      padding: 16px 18px;
       border-radius: 16px;
       border: 3px solid #d8e6f2;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       outline: none;
       transition: 0.2s ease;
     }
 
     input:focus {
       border-color: var(--purple);
-      box-shadow: 0 0 0 4px rgba(177, 151, 252, 0.2);
+      box-shadow: 0 0 0 4px rgba(177, 151, 252, 0.18);
     }
 
     button {
@@ -136,41 +118,41 @@
       font-size: 1rem;
       font-weight: 800;
       cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.2s ease;
+      transition: transform 0.15s ease;
       box-shadow: 0 8px 15px rgba(0,0,0,0.08);
     }
 
-    button:hover { transform: translateY(-2px); }
-    button:active { transform: translateY(1px); }
+    button:hover { transform: translateY(-1px); }
 
     .primary-btn { background: linear-gradient(135deg, #ff8fb8, #ff5f8f); color: white; }
     .check-btn { background: linear-gradient(135deg, #7bd389, #42ba68); color: white; }
     .next-btn { background: linear-gradient(135deg, #6ec6ff, #3ea8ff); color: white; }
-    .small-btn { padding: 10px 14px; font-size: 0.92rem; }
+    .small-btn { padding: 12px 14px; font-size: 0.95rem; }
 
-    .operation-buttons {
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 10px;
-    }
-
-    .op-btn {
-      color: white;
-      font-size: 1.02rem;
-    }
-
+    .op-btn { color: white; font-size: 1.05rem; }
     .op-btn.add { background: linear-gradient(135deg, #ffd166, #ffb703); }
     .op-btn.sub { background: linear-gradient(135deg, #6ec6ff, #3a86ff); }
     .op-btn.mul { background: linear-gradient(135deg, #b197fc, #8e63ff); }
     .op-btn.active {
-      outline: 4px solid rgba(36,50,74,0.16);
+      outline: 4px solid rgba(36,50,74,0.14);
       transform: scale(1.02);
+    }
+
+    .hint-box {
+      margin-top: 14px;
+      padding: 14px;
+      background: #f5f8ff;
+      border: 2px solid #d9e7f7;
+      border-radius: 16px;
+      font-size: 1rem;
+      line-height: 1.5;
     }
 
     .player-banner {
       margin-top: 18px;
-      background: linear-gradient(135deg, #fff3bf, #ffe7a3);
-      border-radius: 20px;
-      padding: 14px 18px;
+      background: #fff7d6;
+      border-radius: 18px;
+      padding: 16px 18px;
       font-size: 1.15rem;
       font-weight: 800;
       display: flex;
@@ -180,17 +162,45 @@
       flex-wrap: wrap;
     }
 
+    .points-inline {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: #ff5f8f;
+    }
+
+    .mode-banner {
+      margin-top: 18px;
+      background: #eef6ff;
+      border: 3px solid #b9dfff;
+      border-radius: 20px;
+      padding: 16px 18px;
+      text-align: center;
+    }
+
+    .mode-title {
+      font-size: 1rem;
+      color: #4d6b8a;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .mode-value {
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: #22476d;
+    }
+
     .problem-box {
       margin-top: 20px;
       text-align: center;
-      background: linear-gradient(180deg, #f7fbff, #eef7ff);
-      border: 4px dashed #b9dfff;
+      background: #f9fcff;
+      border: 3px dashed #b9dfff;
       border-radius: 24px;
-      padding: 26px 18px;
+      padding: 30px 18px;
     }
 
     .problem-label {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 800;
       color: #4d6b8a;
       margin-bottom: 10px;
@@ -203,25 +213,22 @@
       margin: 8px 0 18px;
     }
 
-    .answer-row {
-      grid-template-columns: 1fr auto auto;
-      align-items: end;
-      margin-top: 16px;
-    }
-
     .feedback {
       margin-top: 18px;
       min-height: 88px;
       border-radius: 20px;
       padding: 16px;
-      font-size: 1.08rem;
+      font-size: 1.05rem;
       line-height: 1.55;
       background: #f8fbff;
       border: 3px solid #ddebf8;
     }
 
+    .feedback.good { background: #effcf2; border-color: #b8ebc3; }
+    .feedback.retry { background: #fff7e8; border-color: #ffe0a3; }
+    .feedback.move { background: #fff1f1; border-color: #ffc7c7; }
+
     .big-points {
-      margin-top: 18px;
       background: linear-gradient(135deg, #ff8fb8, #ff5f8f);
       color: white;
       border-radius: 24px;
@@ -237,33 +244,34 @@
     }
 
     .big-points-value {
-      font-size: 3.1rem;
+      font-size: 3rem;
       font-weight: 900;
       line-height: 1.1;
       display: block;
       margin-top: 6px;
     }
 
-    .mode-banner {
-      margin-top: 18px;
-      background: linear-gradient(135deg, #f1f7ff, #e4f1ff);
-      border: 4px solid #b9dfff;
+    .stat-box {
+      padding: 18px;
       border-radius: 22px;
-      padding: 16px 18px;
+      color: white;
       text-align: center;
     }
 
-    .mode-title {
-      font-size: 1rem;
-      color: #4d6b8a;
-      font-weight: 800;
-      margin-bottom: 6px;
+    .stat-box:nth-child(1) { background: linear-gradient(135deg, #6ec6ff, #3ea8ff); }
+    .stat-box:nth-child(2) { background: linear-gradient(135deg, #7bd389, #42ba68); }
+
+    .stat-value {
+      display: block;
+      font-size: 2rem;
+      font-weight: 900;
+      margin-top: 6px;
     }
 
-    .mode-value {
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: #22476d;
+    .score-title {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 16px;
     }
 
     .celebration {
@@ -272,7 +280,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255,255,255,0.9);
       z-index: 1000;
       opacity: 0;
       pointer-events: none;
@@ -289,7 +297,6 @@
       font-weight: 900;
       color: #ff5f8f;
       text-align: center;
-      text-shadow: 3px 3px 0 #fff;
       padding: 24px;
       animation: pop 0.35s ease;
     }
@@ -299,82 +306,9 @@
       100% { transform: scale(1); }
     }
 
-    .feedback.good {
-      background: #effcf2;
-      border-color: #b8ebc3;
-    }
-
-    .feedback.retry {
-      background: #fff7e8;
-      border-color: #ffe0a3;
-    }
-
-    .feedback.move {
-      background: #fff1f1;
-      border-color: #ffc7c7;
-    }
-
-    .stats-grid {
-      grid-template-columns: repeat(2, 1fr);
-      margin-top: 18px;
-    }
-
-    .stat-box {
-      padding: 18px;
-      border-radius: 22px;
-      color: white;
-      text-align: center;
-    }
-
-    .stat-box:nth-child(1) { background: linear-gradient(135deg, #ff8fb8, #ff5f8f); }
-    .stat-box:nth-child(2) { background: linear-gradient(135deg, #6ec6ff, #3ea8ff); }
-    .stat-box:nth-child(3) { background: linear-gradient(135deg, #7bd389, #42ba68); }
-    .stat-box:nth-child(4) { background: linear-gradient(135deg, #b197fc, #8e63ff); }
-
-    .stat-value {
-      display: block;
-      font-size: 2rem;
-      font-weight: 900;
-      margin-top: 6px;
-    }
-
-    .mascot {
-      text-align: center;
-      font-size: 4.5rem;
-      margin-top: 8px;
-    }
-
-    .helper-list {
-      margin: 16px 0 0;
-      padding-left: 20px;
-      line-height: 1.7;
-      font-size: 1rem;
-    }
-
-    .mini-note {
-      margin-top: 14px;
-      padding: 14px;
-      background: #f7f3ff;
-      border: 3px solid #ddd0ff;
-      border-radius: 18px;
-      font-size: 0.98rem;
-    }
-
-    .stars {
-      font-size: 1.5rem;
-      letter-spacing: 2px;
-    }
-
-    @media (max-width: 860px) {
-      .main-grid {
-        grid-template-columns: 1fr;
-      }
-
+    @media (max-width: 760px) {
       .setup-row,
-      .answer-row {
-        grid-template-columns: 1fr;
-      }
-
+      .answer-row,
       .operation-buttons,
       .stats-grid {
         grid-template-columns: 1fr;
@@ -383,104 +317,84 @@
   </style>
 </head>
 <body>
-  <div class="floating-shape shape1"></div>
-  <div class="floating-shape shape2"></div>
-  <div class="floating-shape shape3"></div>
-  <div class="floating-shape shape4"></div>
-
   <div class="container">
     <section class="hero">
       <h1>🌟 Yunus Math Number Game 🌟</h1>
-      <p>Play a happy math game with adding, subtracting, and multiplication. Enter your name, solve the problem, and collect points!</p>
+      <p>A simple and fun math game for Yunus to practice adding, subtracting, and multiplication.</p>
     </section>
 
-    <div class="main-grid">
-      <section class="card">
-        <div class="setup-row">
-          <div>
-            <label for="playerName">Child's Name</label>
-            <input id="playerName" type="text" placeholder="Type the child's name here" maxlength="20" />
-          </div>
-          <button id="startBtn" class="primary-btn">Start Game</button>
+    <section class="card">
+      <div class="setup-row">
+        <div>
+          <label for="playerName">Child's Name</label>
+          <input id="playerName" type="text" placeholder="Type the child's name here" maxlength="20" />
         </div>
+        <button id="startBtn" class="primary-btn">Start Game</button>
+      </div>
 
-        <div class="operation-buttons">
-          <button class="op-btn add active" data-mode="add">➕ Adding</button>
-          <button class="op-btn sub" data-mode="sub">➖ Subtracting</button>
-          <button class="op-btn mul" data-mode="mul">✖️ Multiplying</button>
+      <div class="operation-buttons">
+        <button class="op-btn add active" data-mode="add">➕ Adding</button>
+        <button class="op-btn sub" data-mode="sub">➖ Subtracting</button>
+        <button class="op-btn mul" data-mode="mul">✖️ Multiplying</button>
+      </div>
+
+      <div class="hint-box" id="hintBox">
+        <strong>Hint:</strong> Pick an operation and solve the problem step by step.
+      </div>
+
+      <div class="player-banner">
+        <div id="welcomeText">👋 Hello, little learner!</div>
+        <div class="points-inline" id="pointsInline">Points Earned: 0</div>
+      </div>
+
+      <div class="mode-banner">
+        <div class="mode-title">You are playing</div>
+        <div class="mode-value" id="modeValue">Adding ➕</div>
+      </div>
+
+      <div class="problem-box">
+        <div class="problem-label">Solve this math problem:</div>
+        <div class="problem-text" id="problemText">2 + 1 = ?</div>
+      </div>
+
+      <div class="answer-row">
+        <div>
+          <label for="answerInput">Your Answer</label>
+          <input id="answerInput" type="number" placeholder="Type your answer" />
         </div>
+        <button id="checkBtn" class="check-btn">Check</button>
+        <button id="nextBtn" class="next-btn">Next Problem</button>
+      </div>
 
-        <div class="player-banner">
-          <div id="welcomeText">👋 Hello, little learner!</div>
-          <div class="stars" id="stars">⭐ ⭐ ⭐</div>
+      <div id="feedback" class="feedback">
+        Enter a name and press <strong>Start Game</strong> to begin the fun.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="score-title">Game Scoreboard</h2>
+      <div class="big-points">
+        <div class="big-points-label">POINTS EARNED</div>
+        <span class="big-points-value" id="scoreValue">0</span>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          Tries Left
+          <span class="stat-value" id="triesValue">3</span>
         </div>
-
-        <div class="mode-banner">
-          <div class="mode-title">You are playing</div>
-          <div class="mode-value" id="modeValue">Adding ➕</div>
+        <div class="stat-box">
+          Correct
+          <span class="stat-value" id="correctValue">0</span>
         </div>
+      </div>
 
-        <div class="problem-box">
-          <div class="problem-label">Solve this math problem:</div>
-          <div class="problem-text" id="problemText">2 + 1 = ?</div>
-        </div>
+      <button id="resetBtn" class="primary-btn small-btn" style="width:100%; margin-top:16px;">Reset Game</button>
+    </section>
+  </div>
 
-        <div class="answer-row">
-          <div>
-            <label for="answerInput">Your Answer</label>
-            <input id="answerInput" type="number" placeholder="Type your answer" />
-          </div>
-          <button id="checkBtn" class="check-btn">Check</button>
-          <button id="nextBtn" class="next-btn">Next Problem</button>
-        </div>
-
-        <div id="feedback" class="feedback">
-          Enter a name and press <strong>Start Game</strong> to begin the fun.
-        </div>
-      </section>
-
-      <aside class="card">
-        <div class="mascot">🧸</div>
-        <h2 style="text-align:center; margin-top:0;">Game Scoreboard</h2>
-
-        <div class="stats-grid">
-          <div class="big-points">
-          <div class="big-points-label">POINTS EARNED</div>
-          <span class="big-points-value" id="scoreValue">0</span>
-        </div>
-          <div class="stat-box">
-            Tries Left
-            <span class="stat-value" id="triesValue">3</span>
-          </div>
-          <div class="stat-box">
-            Correct
-            <span class="stat-value" id="correctValue">0</span>
-          </div>
-          <div class="stat-box">
-            Round
-            <span class="stat-value" id="roundValue">1</span>
-          </div>
-        </div>
-
-        <ul class="helper-list">
-          <li>Each correct answer gives points.</li>
-          <li>You get 3 tries for each problem.</li>
-          <li>If an answer is wrong, the game explains why.</li>
-          <li>After 3 tries, a similar problem appears.</li>
-        </ul>
-
-        <div class="mini-note" id="hintBox">
-          <strong>Hint:</strong> Pick an operation and solve the problem step by step.
-        </div>
-
-        <button id="resetBtn" class="primary-btn small-btn" style="width:100%; margin-top:16px;">Reset Game</button>
-      
-
-        <div class="celebration" id="celebration">
-          <div class="celebration-text" id="celebrationText">Excellent!</div>
-        </div>
-      </aside>
-    </div>
+  <div class="celebration" id="celebration">
+    <div class="celebration-text" id="celebrationText">Excellent!</div>
   </div>
 
   <script>
@@ -490,7 +404,6 @@
       score: 0,
       triesLeft: 3,
       correct: 0,
-      round: 1,
       started: false,
       currentProblem: null
     };
@@ -507,13 +420,12 @@
       problemText: document.getElementById("problemText"),
       feedback: document.getElementById("feedback"),
       welcomeText: document.getElementById("welcomeText"),
+      pointsInline: document.getElementById("pointsInline"),
       modeValue: document.getElementById("modeValue"),
       scoreValue: document.getElementById("scoreValue"),
       triesValue: document.getElementById("triesValue"),
       correctValue: document.getElementById("correctValue"),
-      roundValue: document.getElementById("roundValue"),
       hintBox: document.getElementById("hintBox"),
-      stars: document.getElementById("stars"),
       celebration: document.getElementById("celebration"),
       celebrationText: document.getElementById("celebrationText"),
       opButtons: document.querySelectorAll(".op-btn")
@@ -549,45 +461,6 @@
       return { a, b, mode, text, answer, explanation };
     }
 
-    function updateView() {
-      elements.scoreValue.textContent = state.score;
-      elements.triesValue.textContent = state.triesLeft;
-      elements.correctValue.textContent = state.correct;
-      elements.roundValue.textContent = state.round;
-      elements.modeValue.textContent = getModeDisplayName();
-      elements.welcomeText.textContent = state.playerName
-        ? `🎉 ${state.playerName} is playing!`
-        : "👋 Hello, little learner!";
-
-      const earnedStars = Math.min(3, Math.floor(state.score / 20));
-      elements.stars.textContent = "⭐ ".repeat(Math.max(1, earnedStars + 1)).trim();
-
-      if (state.currentProblem) {
-        elements.problemText.textContent = state.currentProblem.text;
-      }
-    }
-
-    function setFeedback(message, kind = "") {
-      elements.feedback.className = `feedback ${kind}`.trim();
-      elements.feedback.innerHTML = message;
-    }
-
-    function nextProblem(similar = false) {
-      state.currentProblem = generateProblem(state.mode);
-      state.triesLeft = 3;
-      elements.answerInput.value = "";
-      updateView();
-
-      if (similar) {
-        setFeedback(`Let's try a similar <strong>${getModeLabel()}</strong> problem now. You can do it!`, "move");
-      } else {
-        setFeedback(`Here is your next <strong>${getModeLabel()}</strong> problem. Look at the math sign and have fun!`);
-      }
-
-      updateHint();
-      elements.answerInput.focus();
-    }
-
     function getModeLabel() {
       if (state.mode === "add") return "adding";
       if (state.mode === "sub") return "subtracting";
@@ -608,9 +481,13 @@
       }, 1000);
     }
 
+    function setFeedback(message, kind = "") {
+      elements.feedback.className = `feedback ${kind}`.trim();
+      elements.feedback.innerHTML = message;
+    }
+
     function updateHint() {
       if (!state.currentProblem) return;
-
       const p = state.currentProblem;
       let hint = "";
 
@@ -625,13 +502,43 @@
       elements.hintBox.innerHTML = `<strong>Hint:</strong> ${hint}`;
     }
 
+    function updateView() {
+      elements.scoreValue.textContent = state.score;
+      elements.pointsInline.textContent = `Points Earned: ${state.score}`;
+      elements.triesValue.textContent = state.triesLeft;
+      elements.correctValue.textContent = state.correct;
+      elements.modeValue.textContent = getModeDisplayName();
+      elements.welcomeText.textContent = state.playerName
+        ? `🎉 ${state.playerName} is playing!`
+        : "👋 Hello, little learner!";
+
+      if (state.currentProblem) {
+        elements.problemText.textContent = state.currentProblem.text;
+      }
+    }
+
+    function nextProblem(similar = false) {
+      state.currentProblem = generateProblem(state.mode);
+      state.triesLeft = 3;
+      elements.answerInput.value = "";
+      updateView();
+      updateHint();
+
+      if (similar) {
+        setFeedback(`Let's try a similar <strong>${getModeLabel()}</strong> problem now. You can do it!`, "move");
+      } else {
+        setFeedback(`Here is your next <strong>${getModeLabel()}</strong> problem. Look at the math sign and have fun!`);
+      }
+
+      elements.answerInput.focus();
+    }
+
     function startGame() {
       const name = elements.playerName.value.trim();
-      state.playerName = name || "Little Learner";
+      state.playerName = name || "Yunus";
       state.score = 0;
       state.triesLeft = 3;
       state.correct = 0;
-      state.round = 1;
       state.started = true;
       state.currentProblem = generateProblem(state.mode);
       updateView();
@@ -668,7 +575,6 @@
         state.correct += 1;
         showCelebration(praise);
         setFeedback(`<strong>${praise}, ${state.playerName}!</strong> 🎉 Correct answer. <strong>+10 points</strong>!`, "good");
-        state.round += 1;
         updateView();
         setTimeout(() => nextProblem(false), 1000);
         return;
@@ -681,8 +587,6 @@
         setFeedback(`${explainWrong(userAnswer)}<br><strong>Try again.</strong> Tries left: ${state.triesLeft}`, "retry");
       } else {
         setFeedback(`${explainWrong(userAnswer)}<br><strong>No more tries this round.</strong> Let's move to a similar problem now.`, "move");
-        state.round += 1;
-        updateView();
         setTimeout(() => nextProblem(true), 1400);
       }
     }
@@ -707,7 +611,6 @@
       state.score = 0;
       state.triesLeft = 3;
       state.correct = 0;
-      state.round = 1;
       state.started = false;
       state.currentProblem = generateProblem(state.mode);
       elements.playerName.value = "";
@@ -724,7 +627,6 @@
         setFeedback(`Start the game first, then you can go to the next problem.`, "retry");
         return;
       }
-      state.round += 1;
       nextProblem(false);
     });
     elements.resetBtn.addEventListener("click", resetGame);
