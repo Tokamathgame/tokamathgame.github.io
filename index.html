@@ -41,4 +41,595 @@
     }
 
     .shape1 { width: 120px; height: 120px; background: var(--pink); top: 8%; left: 4%; }
-    .shape2 { width: 180px; height: 180px; background: var(--yellow); top: 68%; left: 78%; animation-d
+    .shape2 { width: 180px; height: 180px; background: var(--yellow); top: 68%; left: 78%; animation-delay: 1s; }
+    .shape3 { width: 90px; height: 90px; background: var(--blue); top: 18%; left: 82%; animation-delay: 2s; }
+    .shape4 { width: 130px; height: 130px; background: var(--green); top: 72%; left: 8%; animation-delay: 1.5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-16px); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 20px 10px 10px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      color: #ff5f8f;
+      text-shadow: 2px 2px 0 #fff;
+    }
+
+    .hero p {
+      margin: 10px auto 0;
+      max-width: 700px;
+      font-size: 1.08rem;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      margin-top: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+      border: 5px solid rgba(255,255,255,0.9);
+    }
+
+    .setup-row,
+    .answer-row,
+    .stats-grid,
+    .operation-buttons {
+      display: grid;
+      gap: 12px;
+    }
+
+    .setup-row {
+      grid-template-columns: 1fr auto;
+      align-items: end;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 3px solid #d8e6f2;
+      font-size: 1.05rem;
+      outline: none;
+      transition: 0.2s ease;
+    }
+
+    input:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 4px rgba(177, 151, 252, 0.2);
+    }
+
+    button {
+      border: none;
+      border-radius: 18px;
+      padding: 14px 18px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.2s ease;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+    }
+
+    button:hover { transform: translateY(-2px); }
+    button:active { transform: translateY(1px); }
+
+    .primary-btn { background: linear-gradient(135deg, #ff8fb8, #ff5f8f); color: white; }
+    .check-btn { background: linear-gradient(135deg, #7bd389, #42ba68); color: white; }
+    .next-btn { background: linear-gradient(135deg, #6ec6ff, #3ea8ff); color: white; }
+    .small-btn { padding: 10px 14px; font-size: 0.92rem; }
+
+    .operation-buttons {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 10px;
+    }
+
+    .op-btn {
+      color: white;
+      font-size: 1.02rem;
+    }
+
+    .op-btn.add { background: linear-gradient(135deg, #ffd166, #ffb703); }
+    .op-btn.sub { background: linear-gradient(135deg, #6ec6ff, #3a86ff); }
+    .op-btn.mul { background: linear-gradient(135deg, #b197fc, #8e63ff); }
+    .op-btn.active {
+      outline: 4px solid rgba(36,50,74,0.16);
+      transform: scale(1.02);
+    }
+
+    .player-banner {
+      margin-top: 18px;
+      background: linear-gradient(135deg, #fff3bf, #ffe7a3);
+      border-radius: 20px;
+      padding: 14px 18px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .problem-box {
+      margin-top: 20px;
+      text-align: center;
+      background: linear-gradient(180deg, #f7fbff, #eef7ff);
+      border: 4px dashed #b9dfff;
+      border-radius: 24px;
+      padding: 26px 18px;
+    }
+
+    .problem-label {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #4d6b8a;
+      margin-bottom: 10px;
+    }
+
+    .problem-text {
+      font-size: clamp(2.3rem, 6vw, 4rem);
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin: 8px 0 18px;
+    }
+
+    .answer-row {
+      grid-template-columns: 1fr auto auto;
+      align-items: end;
+      margin-top: 16px;
+    }
+
+    .feedback {
+      margin-top: 18px;
+      min-height: 88px;
+      border-radius: 20px;
+      padding: 16px;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      background: #f8fbff;
+      border: 3px solid #ddebf8;
+    }
+
+    .feedback.good {
+      background: #effcf2;
+      border-color: #b8ebc3;
+    }
+
+    .feedback.retry {
+      background: #fff7e8;
+      border-color: #ffe0a3;
+    }
+
+    .feedback.move {
+      background: #fff1f1;
+      border-color: #ffc7c7;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 18px;
+    }
+
+    .stat-box {
+      padding: 18px;
+      border-radius: 22px;
+      color: white;
+      text-align: center;
+    }
+
+    .stat-box:nth-child(1) { background: linear-gradient(135deg, #ff8fb8, #ff5f8f); }
+    .stat-box:nth-child(2) { background: linear-gradient(135deg, #6ec6ff, #3ea8ff); }
+    .stat-box:nth-child(3) { background: linear-gradient(135deg, #7bd389, #42ba68); }
+    .stat-box:nth-child(4) { background: linear-gradient(135deg, #b197fc, #8e63ff); }
+
+    .stat-value {
+      display: block;
+      font-size: 2rem;
+      font-weight: 900;
+      margin-top: 6px;
+    }
+
+    .mascot {
+      text-align: center;
+      font-size: 4.5rem;
+      margin-top: 8px;
+    }
+
+    .helper-list {
+      margin: 16px 0 0;
+      padding-left: 20px;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .mini-note {
+      margin-top: 14px;
+      padding: 14px;
+      background: #f7f3ff;
+      border: 3px solid #ddd0ff;
+      border-radius: 18px;
+      font-size: 0.98rem;
+    }
+
+    .stars {
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 860px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .setup-row,
+      .answer-row {
+        grid-template-columns: 1fr;
+      }
+
+      .operation-buttons,
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-shape shape1"></div>
+  <div class="floating-shape shape2"></div>
+  <div class="floating-shape shape3"></div>
+  <div class="floating-shape shape4"></div>
+
+  <div class="container">
+    <section class="hero">
+      <h1>🌟 Tiny Math Adventure 🌟</h1>
+      <p>Play a happy math game with adding, subtracting, and multiplication. Enter your name, solve the problem, and collect points!</p>
+    </section>
+
+    <div class="main-grid">
+      <section class="card">
+        <div class="setup-row">
+          <div>
+            <label for="playerName">Child's Name</label>
+            <input id="playerName" type="text" placeholder="Type the child's name here" maxlength="20" />
+          </div>
+          <button id="startBtn" class="primary-btn">Start Game</button>
+        </div>
+
+        <div class="operation-buttons">
+          <button class="op-btn add active" data-mode="add">➕ Adding</button>
+          <button class="op-btn sub" data-mode="sub">➖ Subtracting</button>
+          <button class="op-btn mul" data-mode="mul">✖️ Multiplying</button>
+        </div>
+
+        <div class="player-banner">
+          <div id="welcomeText">👋 Hello, little learner!</div>
+          <div class="stars" id="stars">⭐ ⭐ ⭐</div>
+        </div>
+
+        <div class="problem-box">
+          <div class="problem-label">Solve this math problem:</div>
+          <div class="problem-text" id="problemText">2 + 1 = ?</div>
+        </div>
+
+        <div class="answer-row">
+          <div>
+            <label for="answerInput">Your Answer</label>
+            <input id="answerInput" type="number" placeholder="Type your answer" />
+          </div>
+          <button id="checkBtn" class="check-btn">Check</button>
+          <button id="nextBtn" class="next-btn">Next Problem</button>
+        </div>
+
+        <div id="feedback" class="feedback">
+          Enter a name and press <strong>Start Game</strong> to begin the fun.
+        </div>
+      </section>
+
+      <aside class="card">
+        <div class="mascot">🧸</div>
+        <h2 style="text-align:center; margin-top:0;">Game Scoreboard</h2>
+
+        <div class="stats-grid">
+          <div class="stat-box">
+            Points
+            <span class="stat-value" id="scoreValue">0</span>
+          </div>
+          <div class="stat-box">
+            Tries Left
+            <span class="stat-value" id="triesValue">3</span>
+          </div>
+          <div class="stat-box">
+            Correct
+            <span class="stat-value" id="correctValue">0</span>
+          </div>
+          <div class="stat-box">
+            Round
+            <span class="stat-value" id="roundValue">1</span>
+          </div>
+        </div>
+
+        <ul class="helper-list">
+          <li>Each correct answer gives points.</li>
+          <li>You get 3 tries for each problem.</li>
+          <li>If an answer is wrong, the game explains why.</li>
+          <li>After 3 tries, a similar problem appears.</li>
+        </ul>
+
+        <div class="mini-note" id="hintBox">
+          <strong>Hint:</strong> Pick an operation and solve the problem step by step.
+        </div>
+
+        <button id="resetBtn" class="primary-btn small-btn" style="width:100%; margin-top:16px;">Reset Game</button>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    const state = {
+      playerName: "",
+      mode: "add",
+      score: 0,
+      triesLeft: 3,
+      correct: 0,
+      round: 1,
+      started: false,
+      currentProblem: null
+    };
+
+    const praiseWords = ["Excellent", "Good", "Awesome", "Fantastic"];
+
+    const elements = {
+      playerName: document.getElementById("playerName"),
+      startBtn: document.getElementById("startBtn"),
+      checkBtn: document.getElementById("checkBtn"),
+      nextBtn: document.getElementById("nextBtn"),
+      resetBtn: document.getElementById("resetBtn"),
+      answerInput: document.getElementById("answerInput"),
+      problemText: document.getElementById("problemText"),
+      feedback: document.getElementById("feedback"),
+      welcomeText: document.getElementById("welcomeText"),
+      scoreValue: document.getElementById("scoreValue"),
+      triesValue: document.getElementById("triesValue"),
+      correctValue: document.getElementById("correctValue"),
+      roundValue: document.getElementById("roundValue"),
+      hintBox: document.getElementById("hintBox"),
+      stars: document.getElementById("stars"),
+      opButtons: document.querySelectorAll(".op-btn")
+    };
+
+    function randomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function generateProblem(mode) {
+      let a, b, text, answer, explanation;
+
+      if (mode === "add") {
+        a = randomInt(1, 10);
+        b = randomInt(1, 10);
+        text = `${a} + ${b} = ?`;
+        answer = a + b;
+        explanation = `For adding, put the two groups together. Make sure you are combining both numbers, not leaving one out.`;
+      } else if (mode === "sub") {
+        a = randomInt(3, 12);
+        b = randomInt(1, a - 1);
+        text = `${a} - ${b} = ?`;
+        answer = a - b;
+        explanation = `For subtracting, start with the bigger number and take away the smaller number. Be careful not to add by mistake.`;
+      } else {
+        a = randomInt(1, 5);
+        b = randomInt(1, 5);
+        text = `${a} × ${b} = ?`;
+        answer = a * b;
+        explanation = `For multiplying, think of equal groups. ${a} × ${b} means ${a} groups of ${b}, or skip-count carefully.`;
+      }
+
+      return { a, b, mode, text, answer, explanation };
+    }
+
+    function updateView() {
+      elements.scoreValue.textContent = state.score;
+      elements.triesValue.textContent = state.triesLeft;
+      elements.correctValue.textContent = state.correct;
+      elements.roundValue.textContent = state.round;
+      elements.welcomeText.textContent = state.playerName
+        ? `🎉 ${state.playerName} is playing!`
+        : "👋 Hello, little learner!";
+
+      const earnedStars = Math.min(3, Math.floor(state.score / 20));
+      elements.stars.textContent = "⭐ ".repeat(Math.max(1, earnedStars + 1)).trim();
+
+      if (state.currentProblem) {
+        elements.problemText.textContent = state.currentProblem.text;
+      }
+    }
+
+    function setFeedback(message, kind = "") {
+      elements.feedback.className = `feedback ${kind}`.trim();
+      elements.feedback.innerHTML = message;
+    }
+
+    function nextProblem(similar = false) {
+      state.currentProblem = generateProblem(state.mode);
+      state.triesLeft = 3;
+      elements.answerInput.value = "";
+      updateView();
+
+      if (similar) {
+        setFeedback(`Let's try a similar <strong>${getModeLabel()}</strong> problem now. You can do it!`, "move");
+      } else {
+        setFeedback(`Here is your next <strong>${getModeLabel()}</strong> problem. Take your time and have fun!`);
+      }
+
+      updateHint();
+      elements.answerInput.focus();
+    }
+
+    function getModeLabel() {
+      if (state.mode === "add") return "adding";
+      if (state.mode === "sub") return "subtracting";
+      return "multiplication";
+    }
+
+    function updateHint() {
+      if (!state.currentProblem) return;
+
+      const p = state.currentProblem;
+      let hint = "";
+
+      if (p.mode === "add") {
+        hint = `Hint: Adding means putting ${p.a} and ${p.b} together.`;
+      } else if (p.mode === "sub") {
+        hint = `Hint: Subtracting means starting at ${p.a} and taking away ${p.b}.`;
+      } else {
+        hint = `Hint: Multiplying means equal groups. Think of ${p.a} groups of ${p.b}.`;
+      }
+
+      elements.hintBox.innerHTML = `<strong>Hint:</strong> ${hint}`;
+    }
+
+    function startGame() {
+      const name = elements.playerName.value.trim();
+      state.playerName = name || "Little Learner";
+      state.score = 0;
+      state.triesLeft = 3;
+      state.correct = 0;
+      state.round = 1;
+      state.started = true;
+      state.currentProblem = generateProblem(state.mode);
+      updateView();
+      updateHint();
+      setFeedback(`Welcome, <strong>${state.playerName}</strong>! Let's play some fun <strong>${getModeLabel()}</strong> math!`);
+      elements.answerInput.focus();
+    }
+
+    function explainWrong(inputValue) {
+      const problem = state.currentProblem;
+      let message = `Try again! <strong>${inputValue}</strong> is not correct for <strong>${problem.text.replace(' = ?', '')}</strong>.<br>`;
+      message += `${problem.explanation}`;
+      return message;
+    }
+
+    function checkAnswer() {
+      if (!state.started) {
+        setFeedback(`Please enter a name and press <strong>Start Game</strong> first.`, "retry");
+        return;
+      }
+
+      const raw = elements.answerInput.value.trim();
+      if (raw === "") {
+        setFeedback(`Please type an answer before checking.`, "retry");
+        return;
+      }
+
+      const userAnswer = Number(raw);
+      const correctAnswer = state.currentProblem.answer;
+
+      if (userAnswer === correctAnswer) {
+        const praise = praiseWords[randomInt(0, praiseWords.length - 1)];
+        state.score += 10;
+        state.correct += 1;
+        setFeedback(`<strong>${praise}, ${state.playerName}!</strong> 🎉 That answer is correct. You earned <strong>10 points</strong>!`, "good");
+        state.round += 1;
+        updateView();
+        setTimeout(() => nextProblem(false), 1000);
+        return;
+      }
+
+      state.triesLeft -= 1;
+      updateView();
+
+      if (state.triesLeft > 0) {
+        setFeedback(`${explainWrong(userAnswer)}<br><strong>Tries left:</strong> ${state.triesLeft}`, "retry");
+      } else {
+        setFeedback(`${explainWrong(userAnswer)}<br><strong>Let's move to a similar problem now.</strong>`, "move");
+        state.round += 1;
+        updateView();
+        setTimeout(() => nextProblem(true), 1400);
+      }
+    }
+
+    function setMode(newMode) {
+      state.mode = newMode;
+      elements.opButtons.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.mode === newMode);
+      });
+
+      if (state.started) {
+        nextProblem(false);
+      } else {
+        state.currentProblem = generateProblem(state.mode);
+        updateView();
+        updateHint();
+      }
+    }
+
+    function resetGame() {
+      state.playerName = "";
+      state.score = 0;
+      state.triesLeft = 3;
+      state.correct = 0;
+      state.round = 1;
+      state.started = false;
+      state.currentProblem = generateProblem(state.mode);
+      elements.playerName.value = "";
+      elements.answerInput.value = "";
+      updateView();
+      updateHint();
+      setFeedback(`Game reset! Enter a name and press <strong>Start Game</strong> to play again.`);
+    }
+
+    elements.startBtn.addEventListener("click", startGame);
+    elements.checkBtn.addEventListener("click", checkAnswer);
+    elements.nextBtn.addEventListener("click", () => {
+      if (!state.started) {
+        setFeedback(`Start the game first, then you can go to the next problem.`, "retry");
+        return;
+      }
+      state.round += 1;
+      nextProblem(false);
+    });
+    elements.resetBtn.addEventListener("click", resetGame);
+
+    elements.answerInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") checkAnswer();
+    });
+
+    elements.opButtons.forEach(btn => {
+      btn.addEventListener("click", () => setMode(btn.dataset.mode));
+    });
+
+    state.currentProblem = generateProblem(state.mode);
+    updateView();
+    updateHint();
+  </script>
+</body>
+</html>
