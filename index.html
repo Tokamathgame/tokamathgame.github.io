@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tiny Math Adventure</title>
+  <style>
+    :root {
+      --bg1: #fff8e7;
+      --bg2: #e9f7ff;
+      --card: #ffffff;
+      --text: #24324a;
+      --pink: #ff7eb6;
+      --blue: #6ec6ff;
+      --yellow: #ffd166;
+      --green: #7bd389;
+      --purple: #b197fc;
+      --red: #ff8c8c;
+      --shadow: 0 10px 25px rgba(36, 50, 74, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", "Comic Sans MS", Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .floating-shape {
+      position: fixed;
+      border-radius: 50%;
+      opacity: 0.18;
+      animation: float 7s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .shape1 { width: 120px; height: 120px; background: var(--pink); top: 8%; left: 4%; }
+    .shape2 { width: 180px; height: 180px; background: var(--yellow); top: 68%; left: 78%; animation-d
