@@ -543,10 +543,7 @@
     }
 
     function explainWrong(inputValue) {
-      const problem = state.currentProblem;
-      let message = `Try again! <strong>${inputValue}</strong> is not correct for <strong>${problem.text.replace(' = ?', '')}</strong>.<br>`;
-      message += `${problem.explanation}`;
-      return message;
+      return `Wrong try again.`;
     }
 
     function checkAnswer() {
@@ -579,9 +576,9 @@
       updateView();
 
       if (state.triesLeft > 0) {
-        setFeedback(`${explainWrong(userAnswer)}<br><strong>Try again.</strong>`, "retry");
+        setFeedback(`<strong>Wrong try again</strong>`, "retry");
       } else {
-        setFeedback(`${explainWrong(userAnswer)}<br><strong>No more tries this round.</strong> Let's move to a similar problem now.`, "move");
+        setFeedback(`<strong>Wrong try again, you can do it Yunus</strong>`, "move");
         setTimeout(() => nextProblem(true), 1400);
       }
     }
