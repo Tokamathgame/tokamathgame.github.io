@@ -470,7 +470,8 @@
     }
 
     function showCelebration(text) {
-      elements.celebrationText.textContent = text + "!";
+      const nameToShow = state.playerName || "Yunus";
+      elements.celebrationText.textContent = `${text} ${nameToShow}!`;
       elements.celebration.classList.add("show");
       setTimeout(() => {
         elements.celebration.classList.remove("show");
@@ -566,7 +567,7 @@
         state.score += 10;
         state.correct += 1;
         showCelebration(praise);
-        setFeedback(`<strong>${praise}, ${state.playerName}!</strong> 🎉 Correct answer. <strong>+10 points</strong>!`, "good");
+        setFeedback(`<strong>${praise} ${state.playerName || "Yunus"}!</strong> 🎉 Correct answer. <strong>+10 points</strong>!`, "good");
         updateView();
         setTimeout(() => nextProblem(false), 1000);
         return;
