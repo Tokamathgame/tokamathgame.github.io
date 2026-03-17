@@ -223,6 +223,44 @@
       outline: none;
     }
 
+    .visual-counting {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .count-group {
+      background: #ffffff;
+      border: 2px solid #d9e7f7;
+      border-radius: 18px;
+      padding: 12px;
+      min-height: 120px;
+    }
+
+    .count-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #22476d;
+      margin-bottom: 8px;
+    }
+
+    .count-items {
+      font-size: 2rem;
+      line-height: 1.4;
+      word-break: break-word;
+      min-height: 56px;
+    }
+
+    .count-operator {
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: #ff5f8f;
+      align-self: center;
+      padding-top: 24px;
+    }
+
     .answer-row {
       display: flex;
       justify-content: center;
@@ -340,6 +378,14 @@
       .answer-inline {
         width: 140px;
       }
+
+      .visual-counting {
+        grid-template-columns: 1fr;
+      }
+
+      .count-operator {
+        padding-top: 0;
+      }
     }
   </style>
 </head>
@@ -437,6 +483,17 @@
           <div class="problem-text" id="problemText">2 + 1 =</div>
           <input id="answerInput" class="answer-inline" type="number" placeholder="?" />
         </div>
+        <div class="visual-counting">
+          <div class="count-group">
+            <div class="count-title" id="leftCountTitle">Count these</div>
+            <div class="count-items" id="leftCountItems">🍎 🍎</div>
+          </div>
+          <div class="count-operator" id="middleOperator">+</div>
+          <div class="count-group">
+            <div class="count-title" id="rightCountTitle">Count these</div>
+            <div class="count-items" id="rightCountItems">🍎</div>
+          </div>
+        </div>
       </div>
 
       <div class="answer-row">
@@ -470,44 +527,7 @@
       <button id="resetBtn" class="primary-btn small-btn" style="width:100%; margin-top:16px;">Reset Game</button>
     </section>
 
-    <section class="card">
-      <h2 class="score-title">Yunus Adding Worksheet</h2>
-      <div style="background:#fffdf4; border:2px solid #ffe7a3; border-radius:20px; padding:18px; line-height:1.7;">
-        <div style="font-size:1.1rem; font-weight:800; color:#22476d; margin-bottom:10px;">How to count when adding two numbers</div>
-        <div style="font-size:1rem; margin-bottom:12px;">
-          <strong>Step 1:</strong> Start with the first number.<br>
-          <strong>Step 2:</strong> Count up the second number.<br>
-          <strong>Step 3:</strong> The last number you say is the answer.
-        </div>
-
-        <div style="background:#f7fbff; border:2px solid #d9e7f7; border-radius:16px; padding:14px; margin-bottom:14px;">
-          <strong>Example 1:</strong> 3 + 2<br>
-          Start at <strong>3</strong> → count <strong>4, 5</strong><br>
-          Answer: <strong>5</strong>
-        </div>
-
-        <div style="background:#f7fbff; border:2px solid #d9e7f7; border-radius:16px; padding:14px; margin-bottom:14px;">
-          <strong>Example 2:</strong> 4 + 3<br>
-          Start at <strong>4</strong> → count <strong>5, 6, 7</strong><br>
-          Answer: <strong>7</strong>
-        </div>
-
-        <div style="font-size:1.08rem; font-weight:800; color:#ff5f8f; margin:16px 0 10px;">Try these, Yunus:</div>
-
-        <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:12px;">
-          <div style="background:white; border:2px dashed #b9dfff; border-radius:16px; padding:14px; min-height:90px;"><strong>1 + 2 =</strong> ______</div>
-          <div style="background:white; border:2px dashed #b9dfff; border-radius:16px; padding:14px; min-height:90px;"><strong>2 + 3 =</strong> ______</div>
-          <div style="background:white; border:2px dashed #b9dfff; border-radius:16px; padding:14px; min-height:90px;"><strong>4 + 1 =</strong> ______</div>
-          <div style="background:white; border:2px dashed #b9dfff; border-radius:16px; padding:14px; min-height:90px;"><strong>5 + 2 =</strong> ______</div>
-          <div style="background:white; border:2px dashed #b9dfff; border-radius:16px; padding:14px; min-height:90px;"><strong>3 + 4 =</strong> ______</div>
-          <div style="background:white; border:2px dashed #b9dfff; border-radius:16px; padding:14px; min-height:90px;"><strong>6 + 1 =</strong> ______</div>
-        </div>
-
-        <div style="margin-top:16px; text-align:center;">
-          <button onclick="window.print()" class="next-btn" type="button">Print Worksheet</button>
-        </div>
-      </div>
-    </section>
+    
   </div>
 
   <div class="celebration" id="celebration">
@@ -542,6 +562,11 @@
       scoreValue: document.getElementById("scoreValue"),
       correctValue: document.getElementById("correctValue"),
       hintBox: document.getElementById("hintBox"),
+      leftCountTitle: document.getElementById("leftCountTitle"),
+      leftCountItems: document.getElementById("leftCountItems"),
+      rightCountTitle: document.getElementById("rightCountTitle"),
+      rightCountItems: document.getElementById("rightCountItems"),
+      middleOperator: document.getElementById("middleOperator"),
       celebration: document.getElementById("celebration"),
       celebrationText: document.getElementById("celebrationText"),
       opButtons: document.querySelectorAll(".op-btn")
@@ -560,7 +585,7 @@
         text = `${a} + ${b} =`;
         answer = a + b;
       } else if (mode === "sub") {
-        a = randomInt(3, 12);
+        a = randomInt(3, 10);
         b = randomInt(1, a - 1);
         text = `${a} - ${b} =`;
         answer = a - b;
@@ -572,6 +597,34 @@
       }
 
       return { a, b, mode, text, answer };
+    }
+
+    function getVisualSet(mode) {
+      if (mode === "add") {
+        return ["🍎", "🍓", "🍌", "🍊"];
+      }
+      if (mode === "sub") {
+        return ["🐶", "🐱", "🐰", "🐥"];
+      }
+      return ["⭐", "🧸", "🍇", "🦋"];
+    }
+
+    function repeatVisual(symbol, count) {
+      return Array.from({ length: count }, () => symbol).join(" ");
+    }
+
+    function updateVisualCounting() {
+      if (!state.currentProblem) return;
+      const p = state.currentProblem;
+      const visuals = getVisualSet(p.mode);
+      const leftSymbol = visuals[0];
+      const rightSymbol = visuals[1];
+
+      elements.leftCountItems.textContent = repeatVisual(leftSymbol, p.a);
+      elements.rightCountItems.textContent = repeatVisual(rightSymbol, p.b);
+      elements.leftCountTitle.textContent = `${p.a} to count`;
+      elements.rightCountTitle.textContent = `${p.b} to count`;
+      elements.middleOperator.textContent = p.mode === "add" ? "+" : p.mode === "sub" ? "−" : "×";
     }
 
     function getModeLabel() {
@@ -627,6 +680,7 @@
 
       if (state.currentProblem) {
         elements.problemText.textContent = state.currentProblem.text;
+        updateVisualCounting();
       }
     }
 
@@ -747,6 +801,7 @@
     state.currentProblem = generateProblem(state.mode);
     updateView();
     updateHint();
+    updateVisualCounting();
   </script>
 </body>
 </html>
