@@ -226,12 +226,18 @@
     .visual-counting {
       margin-top: 18px;
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      grid-template-columns: 1fr auto 1fr auto;
       gap: 12px;
       align-items: start;
     }
 
     .count-group {
+      background: #ffffff;
+      border: 2px solid #d9e7f7;
+      border-radius: 18px;
+      padding: 12px;
+      min-height: 120px;
+    }
       background: #ffffff;
       border: 2px solid #d9e7f7;
       border-radius: 18px;
@@ -257,6 +263,14 @@
       font-size: 2.3rem;
       font-weight: 900;
       color: #ff5f8f;
+      align-self: center;
+      padding-top: 24px;
+    }
+
+    .count-equals {
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: #22476d;
       align-self: center;
       padding-top: 24px;
     }
@@ -383,7 +397,8 @@
         grid-template-columns: 1fr;
       }
 
-      .count-operator {
+      .count-operator,
+      .count-equals {
         padding-top: 0;
       }
     }
@@ -493,6 +508,7 @@
             <div class="count-title" id="rightCountTitle">Count these</div>
             <div class="count-items" id="rightCountItems">🍎</div>
           </div>
+          <div class="count-equals">= ?</div>
         </div>
       </div>
 
@@ -601,12 +617,12 @@
 
     function getVisualSet(mode) {
       if (mode === "add") {
-        return ["🍎", "🍓", "🍌", "🍊"];
+        return ["🍎", "🍊", "🍓", "🍌"];
       }
       if (mode === "sub") {
         return ["🐶", "🐱", "🐰", "🐥"];
       }
-      return ["⭐", "🧸", "🍇", "🦋"];
+      return ["⭐", "🧸", "🦋", "🍇"];
     }
 
     function repeatVisual(symbol, count) {
@@ -617,11 +633,10 @@
       if (!state.currentProblem) return;
       const p = state.currentProblem;
       const visuals = getVisualSet(p.mode);
-      const leftSymbol = visuals[0];
-      const rightSymbol = visuals[1];
+      const symbol = visuals[randomInt(0, visuals.length - 1)];
 
-      elements.leftCountItems.textContent = repeatVisual(leftSymbol, p.a);
-      elements.rightCountItems.textContent = repeatVisual(rightSymbol, p.b);
+      elements.leftCountItems.textContent = repeatVisual(symbol, p.a);
+      elements.rightCountItems.textContent = repeatVisual(symbol, p.b);
       elements.leftCountTitle.textContent = `${p.a} to count`;
       elements.rightCountTitle.textContent = `${p.b} to count`;
       elements.middleOperator.textContent = p.mode === "add" ? "+" : p.mode === "sub" ? "−" : "×";
