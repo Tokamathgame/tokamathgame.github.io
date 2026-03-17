@@ -20,7 +20,6 @@
     }
 
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       font-family: "Trebuchet MS", "Comic Sans MS", Arial, sans-serif;
@@ -28,18 +27,15 @@
       color: var(--text);
       min-height: 100vh;
     }
-
     .container {
       max-width: 920px;
       margin: 0 auto;
       padding: 24px;
     }
-
     .hero {
       text-align: center;
       padding: 10px 10px 18px;
     }
-
     .card {
       background: var(--card);
       border-radius: 24px;
@@ -48,36 +44,30 @@
       border: 1px solid #e5eef7;
       margin-bottom: 20px;
     }
-
     .setup-row,
     .operation-buttons,
     .stats-grid {
       display: grid;
       gap: 12px;
     }
-
     .setup-row {
       grid-template-columns: 1fr auto;
       align-items: end;
     }
-
     .operation-buttons {
       grid-template-columns: repeat(3, 1fr);
       margin-top: 14px;
     }
-
     .stats-grid {
       grid-template-columns: repeat(2, 1fr);
       margin-top: 18px;
     }
-
     label {
       display: block;
       font-weight: 800;
       margin-bottom: 8px;
       font-size: 1.05rem;
     }
-
     input[type="text"],
     input[type="number"] {
       width: 100%;
@@ -88,12 +78,10 @@
       outline: none;
       transition: 0.2s ease;
     }
-
     input:focus {
       border-color: var(--purple);
       box-shadow: 0 0 0 4px rgba(177, 151, 252, 0.18);
     }
-
     button {
       border: none;
       border-radius: 18px;
@@ -104,14 +92,11 @@
       transition: transform 0.15s ease;
       box-shadow: 0 8px 15px rgba(0,0,0,0.08);
     }
-
     button:hover { transform: translateY(-1px); }
-
     .primary-btn { background: linear-gradient(135deg, #ff8fb8, #ff5f8f); color: white; }
     .check-btn { background: linear-gradient(135deg, #7bd389, #42ba68); color: white; }
     .next-btn { background: linear-gradient(135deg, #6ec6ff, #3ea8ff); color: white; }
     .small-btn { padding: 12px 14px; font-size: 0.95rem; }
-
     .op-btn { color: white; font-size: 1.05rem; }
     .op-btn.add { background: linear-gradient(135deg, #ffd166, #ffb703); }
     .op-btn.sub { background: linear-gradient(135deg, #6ec6ff, #3a86ff); }
@@ -120,7 +105,6 @@
       outline: 4px solid rgba(36,50,74,0.14);
       transform: scale(1.02);
     }
-
     .hint-box {
       margin-top: 14px;
       padding: 14px;
@@ -130,7 +114,6 @@
       font-size: 1rem;
       line-height: 1.5;
     }
-
     .player-banner {
       margin-top: 18px;
       background: #fff7d6;
@@ -144,13 +127,11 @@
       gap: 12px;
       flex-wrap: wrap;
     }
-
     .points-inline {
       font-size: 1.05rem;
       font-weight: 900;
       color: #ff5f8f;
     }
-
     .mode-banner {
       margin-top: 18px;
       background: #eef6ff;
@@ -159,20 +140,17 @@
       padding: 16px 18px;
       text-align: center;
     }
-
     .mode-title {
       font-size: 1rem;
       color: #4d6b8a;
       font-weight: 800;
       margin-bottom: 6px;
     }
-
     .mode-value {
       font-size: 1.7rem;
       font-weight: 900;
       color: #22476d;
     }
-
     .problem-box {
       margin-top: 20px;
       background: #f9fcff;
@@ -181,14 +159,12 @@
       padding: 26px 18px;
       text-align: center;
     }
-
     .problem-label {
       font-size: 1.05rem;
       font-weight: 800;
       color: #4d6b8a;
       margin-bottom: 10px;
     }
-
     .problem-row {
       display: flex;
       align-items: center;
@@ -197,14 +173,12 @@
       flex-wrap: wrap;
       margin-top: 10px;
     }
-
     .problem-text {
       font-size: clamp(2.8rem, 7vw, 4.4rem);
       font-weight: 900;
       letter-spacing: 2px;
       margin: 0;
     }
-
     .answer-inline {
       width: 150px;
       max-width: 100%;
@@ -218,14 +192,12 @@
       color: #22476d;
       box-shadow: 0 6px 14px rgba(255, 179, 71, 0.25);
     }
-
     .answer-inline:focus {
       border-color: #ff8a00;
       box-shadow: 0 0 0 5px rgba(255, 179, 71, 0.28);
       outline: none;
       background: #fff3b8;
     }
-
     .visual-counting {
       margin-top: 18px;
       display: grid;
@@ -233,7 +205,6 @@
       gap: 12px;
       align-items: start;
     }
-
     .count-group {
       background: #ffffff;
       border: 2px solid #d9e7f7;
@@ -241,43 +212,51 @@
       padding: 12px;
       min-height: 120px;
     }
-      background: #ffffff;
-      border: 2px solid #d9e7f7;
-      border-radius: 18px;
-      padding: 12px;
-      min-height: 120px;
-    }
-
     .count-title {
       font-size: 1rem;
       font-weight: 800;
       color: #22476d;
       margin-bottom: 8px;
     }
-
     .count-items {
       font-size: 2rem;
-      line-height: 1.4;
-      word-break: break-word;
+      line-height: 1.5;
       min-height: 56px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
     }
-
-    .count-operator {
-      font-size: 2.3rem;
-      font-weight: 900;
-      color: #ff5f8f;
-      align-self: center;
-      padding-top: 24px;
-    }
-
+    .count-operator,
     .count-equals {
       font-size: 2.3rem;
       font-weight: 900;
-      color: #22476d;
       align-self: center;
       padding-top: 24px;
     }
-
+    .count-operator { color: #ff5f8f; }
+    .count-equals { color: #22476d; }
+    .item {
+      display: inline-block;
+      min-width: 32px;
+    }
+    .crossed {
+      position: relative;
+      opacity: 0.55;
+      transform: rotate(-8deg);
+    }
+    .crossed::after {
+      content: "";
+      position: absolute;
+      left: -2px;
+      right: -2px;
+      top: 50%;
+      height: 4px;
+      background: #ff4d4d;
+      transform: rotate(-18deg);
+      border-radius: 999px;
+    }
     .answer-row {
       display: flex;
       justify-content: center;
@@ -286,7 +265,6 @@
       margin-top: 18px;
       flex-wrap: wrap;
     }
-
     .feedback {
       margin-top: 18px;
       min-height: 88px;
@@ -297,11 +275,9 @@
       background: #f8fbff;
       border: 3px solid #ddebf8;
     }
-
     .feedback.good { background: #effcf2; border-color: #b8ebc3; }
     .feedback.retry { background: #fff7e8; border-color: #ffe0a3; }
     .feedback.move { background: #fff1f1; border-color: #ffc7c7; }
-
     .big-points {
       background: linear-gradient(135deg, #ff8fb8, #ff5f8f);
       color: white;
@@ -310,13 +286,11 @@
       padding: 18px;
       box-shadow: var(--shadow);
     }
-
     .big-points-label {
       font-size: 1rem;
       font-weight: 800;
       letter-spacing: 0.5px;
     }
-
     .big-points-value {
       font-size: 3rem;
       font-weight: 900;
@@ -324,30 +298,25 @@
       display: block;
       margin-top: 6px;
     }
-
     .stat-box {
       padding: 18px;
       border-radius: 22px;
       color: white;
       text-align: center;
     }
-
     .stat-box:nth-child(1) { background: linear-gradient(135deg, #6ec6ff, #3ea8ff); }
     .stat-box:nth-child(2) { background: linear-gradient(135deg, #7bd389, #42ba68); }
-
     .stat-value {
       display: block;
       font-size: 2rem;
       font-weight: 900;
       margin-top: 6px;
     }
-
     .score-title {
       text-align: center;
       margin-top: 0;
       margin-bottom: 16px;
     }
-
     .celebration {
       position: fixed;
       inset: 0;
@@ -360,12 +329,10 @@
       pointer-events: none;
       transition: opacity 0.2s ease;
     }
-
     .celebration.show {
       opacity: 1;
       pointer-events: auto;
     }
-
     .celebration-text {
       font-size: clamp(2.6rem, 9vw, 6rem);
       font-weight: 900;
@@ -374,36 +341,20 @@
       padding: 24px;
       animation: pop 0.35s ease;
     }
-
     @keyframes pop {
       0% { transform: scale(0.6); }
       100% { transform: scale(1); }
     }
-
     @media (max-width: 760px) {
       .setup-row,
       .operation-buttons,
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-
+      .stats-grid { grid-template-columns: 1fr; }
       .problem-row,
-      .answer-row {
-        flex-direction: column;
-      }
-
-      .answer-inline {
-        width: 180px;
-      }
-
-      .visual-counting {
-        grid-template-columns: 1fr;
-      }
-
+      .answer-row { flex-direction: column; }
+      .answer-inline { width: 180px; }
+      .visual-counting { grid-template-columns: 1fr; }
       .count-operator,
-      .count-equals {
-        padding-top: 0;
-      }
+      .count-equals { padding-top: 0; }
     }
   </style>
 </head>
@@ -422,22 +373,15 @@
               <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.18"></feDropShadow>
             </filter>
           </defs>
-
-          <rect x="20" y="25" width="860" height="250" rx="48" fill="url(#logoBg)" stroke="#ffffff" stroke-width="8" transform="scale(0.477) translate(0 0)"></rect>
           <rect x="8" y="8" width="404" height="154" rx="28" fill="url(#logoBg)" stroke="#ffffff" stroke-width="6"></rect>
-
           <circle cx="42" cy="38" r="14" fill="#ffd54f"></circle>
           <text x="42" y="43" text-anchor="middle" font-size="18" font-weight="900" fill="#ffffff">+</text>
-
           <circle cx="378" cy="38" r="14" fill="#6ec6ff"></circle>
           <text x="378" y="43" text-anchor="middle" font-size="16" font-weight="900" fill="#ffffff">×</text>
-
           <circle cx="64" cy="128" r="12" fill="#b197fc"></circle>
           <text x="64" y="133" text-anchor="middle" font-size="16" font-weight="900" fill="#ffffff">−</text>
-
           <circle cx="356" cy="128" r="12" fill="#7bd389"></circle>
           <text x="356" y="132" text-anchor="middle" font-size="10" font-weight="900" fill="#ffffff">123</text>
-
           <g transform="translate(90,26)" filter="url(#softShadow)">
             <text x="0" y="56" font-family="Trebuchet MS, Arial, sans-serif" font-size="56" font-weight="900" fill="#47b0ff" stroke="#ffffff" stroke-width="5" paint-order="stroke">Y</text>
             <text x="38" y="56" font-family="Trebuchet MS, Arial, sans-serif" font-size="56" font-weight="900" fill="#ffb347" stroke="#ffffff" stroke-width="5" paint-order="stroke">u</text>
@@ -445,23 +389,8 @@
             <text x="112" y="56" font-family="Trebuchet MS, Arial, sans-serif" font-size="56" font-weight="900" fill="#ffd54f" stroke="#ffffff" stroke-width="5" paint-order="stroke">u</text>
             <text x="150" y="56" font-family="Trebuchet MS, Arial, sans-serif" font-size="56" font-weight="900" fill="#ff6f91" stroke="#ffffff" stroke-width="5" paint-order="stroke">s</text>
           </g>
-
           <rect x="116" y="92" width="188" height="34" rx="17" fill="#2f6fdb"></rect>
           <text x="210" y="114" text-anchor="middle" font-family="Trebuchet MS, Arial, sans-serif" font-size="18" font-weight="900" fill="#ffffff">Fun Math Game</text>
-
-          <g transform="translate(22,78)">
-            <circle cx="26" cy="18" r="18" fill="#ffcf66"></circle>
-            <circle cx="20" cy="14" r="2.5" fill="#333"></circle>
-            <circle cx="32" cy="14" r="2.5" fill="#333"></circle>
-            <path d="M18 23 Q26 30 34 23" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"></path>
-          </g>
-
-          <g transform="translate(338,80)">
-            <rect x="0" y="20" width="34" height="24" rx="4" fill="#ffffff" stroke="#ff8a65" stroke-width="2"></rect>
-            <line x1="17" y1="20" x2="17" y2="44" stroke="#ff8a65" stroke-width="2"></line>
-            <path d="M0 22 Q8 14 17 20" fill="none" stroke="#ff8a65" stroke-width="2"></path>
-            <path d="M17 20 Q26 14 34 22" fill="none" stroke="#ff8a65" stroke-width="2"></path>
-          </g>
         </svg>
       </div>
     </section>
@@ -481,9 +410,7 @@
         <button class="op-btn mul" data-mode="mul">✖️ Multiplying</button>
       </div>
 
-      <div class="hint-box" id="hintBox">
-        <strong>Hint:</strong> Pick an operation and solve the problem step by step.
-      </div>
+      <div class="hint-box" id="hintBox"><strong>Hint:</strong> Pick an operation and solve the problem step by step.</div>
 
       <div class="player-banner">
         <div id="welcomeText">👋 Hello, little learner!</div>
@@ -504,12 +431,12 @@
         <div class="visual-counting">
           <div class="count-group">
             <div class="count-title" id="leftCountTitle">Count these</div>
-            <div class="count-items" id="leftCountItems">🍎 🍎</div>
+            <div class="count-items" id="leftCountItems"></div>
           </div>
           <div class="count-operator" id="middleOperator">+</div>
           <div class="count-group">
             <div class="count-title" id="rightCountTitle">Count these</div>
-            <div class="count-items" id="rightCountItems">🍎</div>
+            <div class="count-items" id="rightCountItems"></div>
           </div>
           <div class="count-equals">= ?</div>
         </div>
@@ -520,9 +447,7 @@
         <button id="nextBtn" class="next-btn">Next Problem</button>
       </div>
 
-      <div id="feedback" class="feedback">
-        Enter a name and press <strong>Start Game</strong> to begin the fun.
-      </div>
+      <div id="feedback" class="feedback">Enter a name and press <strong>Start Game</strong> to begin the fun.</div>
     </section>
 
     <section class="card">
@@ -531,22 +456,12 @@
         <div class="big-points-label">POINTS EARNED</div>
         <span class="big-points-value" id="scoreValue">0</span>
       </div>
-
       <div class="stats-grid">
-        <div class="stat-box">
-          Correct
-          <span class="stat-value" id="correctValue">0</span>
-        </div>
-        <div class="stat-box">
-          Great Job
-          <span class="stat-value">⭐</span>
-        </div>
+        <div class="stat-box">Correct<span class="stat-value" id="correctValue">0</span></div>
+        <div class="stat-box">Great Job<span class="stat-value">⭐</span></div>
       </div>
-
       <button id="resetBtn" class="primary-btn small-btn" style="width:100%; margin-top:16px;">Reset Game</button>
     </section>
-
-    
   </div>
 
   <div class="celebration" id="celebration">
@@ -597,52 +512,39 @@
 
     function generateProblem(mode) {
       let a, b, text, answer;
-
       if (mode === "add") {
-        a = randomInt(1, 10);
-        b = randomInt(1, 10);
+        a = randomInt(2, 12);
+        b = randomInt(1, 8);
         text = `${a} + ${b} =`;
         answer = a + b;
       } else if (mode === "sub") {
-        a = randomInt(3, 10);
-        b = randomInt(1, a - 1);
+        a = randomInt(5, 12);
+        b = randomInt(1, Math.min(5, a - 1));
         text = `${a} - ${b} =`;
         answer = a - b;
       } else {
         a = randomInt(1, 5);
-        b = randomInt(1, 5);
+        b = randomInt(2, 5);
         text = `${a} × ${b} =`;
         answer = a * b;
       }
-
       return { a, b, mode, text, answer };
     }
 
     function getVisualSet(mode) {
-      if (mode === "add") {
-        return ["🍎", "🍊", "🍓", "🍌"];
-      }
-      if (mode === "sub") {
-        return ["🐶", "🐱", "🐰", "🐥"];
-      }
+      if (mode === "add") return ["🍎", "🍊", "🍓", "🍌"];
+      if (mode === "sub") return ["🐶", "🐱", "🐰", "🐥"];
       return ["⭐", "🧸", "🦋", "🍇"];
     }
 
-    function repeatVisual(symbol, count) {
-      return Array.from({ length: count }, () => symbol).join(" ");
-    }
-
-    function updateVisualCounting() {
-      if (!state.currentProblem) return;
-      const p = state.currentProblem;
-      const visuals = getVisualSet(p.mode);
-      const symbol = visuals[randomInt(0, visuals.length - 1)];
-
-      elements.leftCountItems.textContent = repeatVisual(symbol, p.a);
-      elements.rightCountItems.textContent = repeatVisual(symbol, p.b);
-      elements.leftCountTitle.textContent = `${p.a} to count`;
-      elements.rightCountTitle.textContent = `${p.b} to count`;
-      elements.middleOperator.textContent = p.mode === "add" ? "+" : p.mode === "sub" ? "−" : "×";
+    function renderItems(container, symbol, count, crossed = false) {
+      container.innerHTML = "";
+      for (let i = 0; i < count; i++) {
+        const span = document.createElement("span");
+        span.className = crossed ? "item crossed" : "item";
+        span.textContent = symbol;
+        container.appendChild(span);
+      }
     }
 
     function getModeLabel() {
@@ -661,9 +563,7 @@
       const nameToShow = state.playerName || "Yunus";
       elements.celebrationText.textContent = `${text} ${nameToShow}!`;
       elements.celebration.classList.add("show");
-      setTimeout(() => {
-        elements.celebration.classList.remove("show");
-      }, 1600);
+      setTimeout(() => elements.celebration.classList.remove("show"), 1600);
     }
 
     function setFeedback(message, kind = "") {
@@ -675,16 +575,24 @@
       if (!state.currentProblem) return;
       const p = state.currentProblem;
       let hint = "";
-
-      if (p.mode === "add") {
-        hint = `Hint: Adding means putting ${p.a} and ${p.b} together.`;
-      } else if (p.mode === "sub") {
-        hint = `Hint: Subtracting means starting at ${p.a} and taking away ${p.b}.`;
-      } else {
-        hint = `Hint: Multiplying means equal groups. Think of ${p.a} groups of ${p.b}.`;
-      }
-
+      if (p.mode === "add") hint = `Hint: Count on from ${p.a} by ${p.b} more.`;
+      else if (p.mode === "sub") hint = `Hint: Start with ${p.a} and cross out ${p.b}.`;
+      else hint = `Hint: Think of ${p.a} groups with ${p.b} in each group.`;
       elements.hintBox.innerHTML = `<strong>Hint:</strong> ${hint}`;
+    }
+
+    function updateVisualCounting() {
+      if (!state.currentProblem) return;
+      const p = state.currentProblem;
+      const visuals = getVisualSet(p.mode);
+      const symbol = visuals[randomInt(0, visuals.length - 1)];
+
+      elements.leftCountTitle.textContent = p.mode === "sub" ? `${p.a} starting items` : `${p.a} to count`;
+      elements.rightCountTitle.textContent = p.mode === "sub" ? `${p.b} crossed out` : `${p.b} to count`;
+      elements.middleOperator.textContent = p.mode === "add" ? "+" : p.mode === "sub" ? "−" : "×";
+
+      renderItems(elements.leftCountItems, symbol, p.a, false);
+      renderItems(elements.rightCountItems, symbol, p.b, p.mode === "sub");
     }
 
     function updateView() {
@@ -692,10 +600,7 @@
       elements.pointsInline.textContent = `Points Earned: ${state.score}`;
       elements.correctValue.textContent = state.correct;
       elements.modeValue.textContent = getModeDisplayName();
-      elements.welcomeText.textContent = state.playerName
-        ? `🎉 ${state.playerName} is playing!`
-        : "👋 Hello, little learner!";
-
+      elements.welcomeText.textContent = state.playerName ? `🎉 ${state.playerName} is playing!` : "👋 Hello, little learner!";
       if (state.currentProblem) {
         elements.problemText.textContent = state.currentProblem.text;
         updateVisualCounting();
@@ -708,13 +613,7 @@
       elements.answerInput.value = "";
       updateView();
       updateHint();
-
-      if (similar) {
-        setFeedback(`Let's try a similar <strong>${getModeLabel()}</strong> problem now. You can do it!`, "move");
-      } else {
-        setFeedback(`Here is your next <strong>${getModeLabel()}</strong> problem.`, "");
-      }
-
+      setFeedback(similar ? `Let's try a similar <strong>${getModeLabel()}</strong> problem now. You can do it!` : `Here is your next <strong>${getModeLabel()}</strong> problem.`, similar ? "move" : "");
       elements.answerInput.focus();
     }
 
@@ -737,16 +636,13 @@
         setFeedback(`Please enter a name and press <strong>Start Game</strong> first.`, "retry");
         return;
       }
-
       const raw = elements.answerInput.value.trim();
       if (raw === "") {
         setFeedback(`Please type an answer first.`, "retry");
         return;
       }
-
       const userAnswer = Number(raw);
       const correctAnswer = state.currentProblem.answer;
-
       if (userAnswer === correctAnswer) {
         const praise = praiseWords[randomInt(0, praiseWords.length - 1)];
         state.score += 10;
@@ -757,9 +653,7 @@
         setTimeout(() => nextProblem(false), 1600);
         return;
       }
-
       state.triesLeft -= 1;
-
       if (state.triesLeft > 0) {
         setFeedback(`<strong>Wrong try again</strong>`, "retry");
       } else {
@@ -770,13 +664,9 @@
 
     function setMode(newMode) {
       state.mode = newMode;
-      elements.opButtons.forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.mode === newMode);
-      });
-
-      if (state.started) {
-        nextProblem(false);
-      } else {
+      elements.opButtons.forEach(btn => btn.classList.toggle("active", btn.dataset.mode === newMode));
+      if (state.started) nextProblem(false);
+      else {
         state.currentProblem = generateProblem(state.mode);
         updateView();
         updateHint();
@@ -807,19 +697,14 @@
       nextProblem(false);
     });
     elements.resetBtn.addEventListener("click", resetGame);
-
     elements.answerInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") checkAnswer();
     });
-
-    elements.opButtons.forEach(btn => {
-      btn.addEventListener("click", () => setMode(btn.dataset.mode));
-    });
+    elements.opButtons.forEach(btn => btn.addEventListener("click", () => setMode(btn.dataset.mode)));
 
     state.currentProblem = generateProblem(state.mode);
     updateView();
     updateHint();
-    updateVisualCounting();
   </script>
 </body>
 </html>
