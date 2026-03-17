@@ -201,7 +201,7 @@
     .visual-counting {
       margin-top: 18px;
       display: grid;
-      grid-template-columns: 1fr auto 1fr auto;
+      grid-template-columns: 1fr;
       gap: 12px;
       align-items: start;
     }
@@ -233,7 +233,7 @@
       font-size: 2.3rem;
       font-weight: 900;
       align-self: center;
-      padding-top: 24px;
+      padding-top: 0;
     }
     .count-operator { color: #ff5f8f; }
     .count-equals { color: #22476d; }
@@ -433,12 +433,12 @@
             <div class="count-title" id="leftCountTitle">Count these</div>
             <div class="count-items" id="leftCountItems"></div>
           </div>
-          <div class="count-operator" id="middleOperator">+</div>
-          <div class="count-group">
-            <div class="count-title" id="rightCountTitle">Count these</div>
+          <div class="count-operator" id="middleOperator">−</div>
+          <div class="count-group" id="subtractBox" style="display:none;">
+            <div class="count-title" id="rightCountTitle">Cross these out</div>
             <div class="count-items" id="rightCountItems"></div>
           </div>
-          <div class="count-equals">= ?</div>
+          <div class="count-equals" id="equalsText">= ?</div>
         </div>
       </div>
 
@@ -501,6 +501,8 @@
       rightCountTitle: document.getElementById("rightCountTitle"),
       rightCountItems: document.getElementById("rightCountItems"),
       middleOperator: document.getElementById("middleOperator"),
+      subtractBox: document.getElementById("subtractBox"),
+      equalsText: document.getElementById("equalsText"),
       celebration: document.getElementById("celebration"),
       celebrationText: document.getElementById("celebrationText"),
       opButtons: document.querySelectorAll(".op-btn")
@@ -547,6 +549,16 @@
       }
     }
 
+    function renderSubtractionRow(container, symbol, total, crossedCount) {
+      container.innerHTML = "";
+      for (let i = 0; i < total; i++) {
+        const span = document.createElement("span");
+        span.className = i >= total - crossedCount ? "item crossed" : "item";
+        span.textContent = symbol;
+        container.appendChild(span);
+      }
+    }
+
     function getModeLabel() {
       if (state.mode === "add") return "adding";
       if (state.mode === "sub") return "subtracting";
@@ -576,7 +588,7 @@
       const p = state.currentProblem;
       let hint = "";
       if (p.mode === "add") hint = `Hint: Count on from ${p.a} by ${p.b} more.`;
-      else if (p.mode === "sub") hint = `Hint: Start with ${p.a} and cross out ${p.b}.`;
+      else if (p.mode === "sub") hint = `Hint: Count the pictures that are not crossed out.`;
       else hint = `Hint: Think of ${p.a} groups with ${p.b} in each group.`;
       elements.hintBox.innerHTML = `<strong>Hint:</strong> ${hint}`;
     }
@@ -587,12 +599,21 @@
       const visuals = getVisualSet(p.mode);
       const symbol = visuals[randomInt(0, visuals.length - 1)];
 
-      elements.leftCountTitle.textContent = p.mode === "sub" ? `${p.a} starting items` : `${p.a} to count`;
-      elements.rightCountTitle.textContent = p.mode === "sub" ? `${p.b} crossed out` : `${p.b} to count`;
       elements.middleOperator.textContent = p.mode === "add" ? "+" : p.mode === "sub" ? "−" : "×";
 
-      renderItems(elements.leftCountItems, symbol, p.a, false);
-      renderItems(elements.rightCountItems, symbol, p.b, p.mode === "sub");
+      if (p.mode === "sub") {
+        elements.leftCountTitle.textContent = `Start with ${p.a}`;
+        renderSubtractionRow(elements.leftCountItems, symbol, p.a, p.b);
+        elements.subtractBox.style.display = "none";
+        elements.equalsText.textContent = `Take away ${p.b} = ?`;
+      } else {
+        elements.leftCountTitle.textContent = `${p.a} to count`;
+        elements.rightCountTitle.textContent = `${p.b} to count`;
+        renderItems(elements.leftCountItems, symbol, p.a, false);
+        renderItems(elements.rightCountItems, symbol, p.b, false);
+        elements.subtractBox.style.display = "block";
+        elements.equalsText.textContent = `= ?`;
+      }
     }
 
     function updateView() {
