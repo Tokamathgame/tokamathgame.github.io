@@ -645,7 +645,7 @@
       elements.celebration.classList.add("show");
       setTimeout(() => {
         elements.celebration.classList.remove("show");
-      }, 1000);
+      }, 1600);
     }
 
     function setFeedback(message, kind = "") {
@@ -736,7 +736,7 @@
         showCelebration(praise);
         setFeedback(`<strong>${praise} ${state.playerName || "Yunus"}!</strong> 🎉 Correct answer. <strong>+10 points</strong>!`, "good");
         updateView();
-        setTimeout(() => nextProblem(false), 1000);
+        setTimeout(() => nextProblem(false), 1600);
         return;
       }
 
